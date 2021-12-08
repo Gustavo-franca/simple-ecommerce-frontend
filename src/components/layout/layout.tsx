@@ -3,17 +3,15 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../../styles/globalStyle';
 import { ApplicationProvider } from '../../contexts/application';
 import { Theme } from '../../styles/theme';
-import config from '../../config';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout = async ({ children }: LayoutProps) => {
-  const conf = await config();
+const Layout = ({ children }: LayoutProps) => {
   return (
     <ThemeProvider theme={Theme}>
-      <ApplicationProvider value={{ config: conf }}>
+      <ApplicationProvider >
         <GlobalStyle />
         {children}
       </ApplicationProvider>

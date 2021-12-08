@@ -1,2 +1,2 @@
-export { default } from './config';
+export { default, defaultConfig } from './config';
 export type { Configs } from './config';

@@ -1,5 +1,11 @@
-import React, { createContext, ReactNode, useContext } from 'react';
-import { Configs } from '../../config';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
+import config, { Configs, defaultConfig } from '../../config';
 
 interface ApplicationProps {
   config?: Configs;
@@ -13,8 +19,19 @@ interface PageProviderProps {
 }
 
 export const ApplicationProvider = ({ children, value }: PageProviderProps) => {
+  const [configs, setConfig] = useState<Configs>(defaultConfig);
+
+  useEffect(() => {
+    (async () => {
+      setConfig(await config());
+    })();
+  }, []);
+
   return (
-    <ApplicationContext.Provider value={value ?? {}}>
+    <ApplicationContext.Provider value={{
+      config : configs,
+      ...value,
+    } ?? { config: configs}}>
       {children}
     </ApplicationContext.Provider>
   );
