@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
-const ProductList = () => <div/>;
+const ProductList = () => <div />;
 
 export default ProductList;
