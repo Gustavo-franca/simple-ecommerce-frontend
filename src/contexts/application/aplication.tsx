@@ -1,14 +1,11 @@
 import React, { createContext, ReactNode, useContext } from 'react';
+import { Configs } from '../../config';
 
 interface ApplicationProps {
-  date: Date;
+  config?: Configs;
 }
 
-const initialProps = {
-  date: new Date()
-};
-
-export const ApplicationContext = createContext<ApplicationProps>(initialProps);
+export const ApplicationContext = createContext<ApplicationProps>({});
 
 interface PageProviderProps {
   children?: ReactNode;
@@ -17,7 +14,7 @@ interface PageProviderProps {
 
 export const ApplicationProvider = ({ children, value }: PageProviderProps) => {
   return (
-    <ApplicationContext.Provider value={value ?? initialProps}>
+    <ApplicationContext.Provider value={value ?? {}}>
       {children}
     </ApplicationContext.Provider>
   );
