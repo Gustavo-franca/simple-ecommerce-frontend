@@ -1,7 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+## To Run in local scope 
+Add the variable `REACT_APP_SCOPE=local` in run time start script or in .env file
 ## Available Scripts
 
 In the project directory, you can run:
