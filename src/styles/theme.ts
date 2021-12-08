@@ -1,15 +1,11 @@
 import { DefaultTheme } from 'styled-components';
 
-const Theme : DefaultTheme = {
+const Theme: DefaultTheme = {
   borderRadius: '5px',
 
   colors: {
-    primary: '#000F6E',
-    background: '#FCFCFC',
-    textP: '#5F5F5F',
-    textTitle: '#5F5F5F',
-    navigationButton: '#C4C4C4',
-    whatsapp: '#25D366'
+    c1J: '#FFFFFF',
+    c1A: '#151515'
   },
   fontSize: {
     S1: '9.4em',
@@ -29,6 +25,12 @@ const Theme : DefaultTheme = {
     lg: 992,
     md: 768,
     sm: 576
+  },
+  spacing: {
+    size8: '8px'
+  },
+  container: {
+    maxWidth: '1200px'
   }
 };
 
