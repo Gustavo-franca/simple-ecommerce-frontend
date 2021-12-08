@@ -1,3 +1,4 @@
 {
-  "appHost" : "http://localhost:8080/"
+  "appHost" : "http://localhost:8080/",
+  "appName" : "Simple ecommerce"
 }

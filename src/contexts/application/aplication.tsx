@@ -8,10 +8,12 @@ import React, {
 import config, { Configs, defaultConfig } from '../../config';
 
 interface ApplicationProps {
-  config?: Configs;
+  config: Configs;
 }
 
-export const ApplicationContext = createContext<ApplicationProps>({});
+export const ApplicationContext = createContext<ApplicationProps>({
+  config: defaultConfig
+});
 
 interface PageProviderProps {
   children?: ReactNode;
@@ -28,10 +30,14 @@ export const ApplicationProvider = ({ children, value }: PageProviderProps) => {
   }, []);
 
   return (
-    <ApplicationContext.Provider value={{
-      config : configs,
-      ...value,
-    } ?? { config: configs}}>
+    <ApplicationContext.Provider
+      value={
+        {
+          config: configs,
+          ...value
+        } ?? { config: configs }
+      }
+    >
       {children}
     </ApplicationContext.Provider>
   );

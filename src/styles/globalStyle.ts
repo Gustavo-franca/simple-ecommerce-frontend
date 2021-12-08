@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     overflow-x: hidden; 
-    background-color: ${(props) => props.theme.colors.background};
+    background-color: ${(props) => props.theme.colors.c1J};
     height:100vh;
     width:100vw;
     margin: 0;

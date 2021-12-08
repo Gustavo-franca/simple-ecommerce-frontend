@@ -3,14 +3,12 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string;
+
     colors: {
-      primary: string;
-      background: string;
-      textP: string;
-      textTitle: string;
-      navigationButton: string;
-      whatsapp: string;
+      c1A: string;
+      c1J: string;
     };
+
     fontSize: {
       S1: string;
       S2: string;
@@ -20,6 +18,7 @@ declare module 'styled-components' {
       S6: string;
       SP: string;
     };
+
     fontFamily: {
       raleway: string;
       roboto: string;
@@ -30,6 +29,14 @@ declare module 'styled-components' {
       lg: number;
       md: number;
       sm: number;
+    };
+
+    spacing: {
+      size8: string;
+    };
+
+    container: {
+      maxWidth: string;
     };
   }
 }

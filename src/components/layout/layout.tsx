@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../../styles/globalStyle';
 import { ApplicationProvider } from '../../contexts/application';
 import { Theme } from '../../styles/theme';
+import { ApplicationContainer } from './styles';
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,9 +12,9 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <ThemeProvider theme={Theme}>
-      <ApplicationProvider >
+      <ApplicationProvider>
         <GlobalStyle />
-        {children}
+        <ApplicationContainer>{children}</ApplicationContainer>
       </ApplicationProvider>
     </ThemeProvider>
   );
