@@ -1,12 +1,13 @@
 import React from 'react';
 import { HeaderContainer } from './styles';
 import Logo from '../logo';
+import SearchBar from '../searchBar';
 
 const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
-      <div>SearchBar</div>
+      <SearchBar />
       <div>icons</div>
     </HeaderContainer>
   );
