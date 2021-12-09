@@ -5,18 +5,15 @@ declare module 'styled-components' {
     borderRadius: string;
 
     colors: {
+      c1H: string;
       c1A: string;
+      c1C: string;
+      c1D: string;
       c1J: string;
     };
 
     fontSize: {
-      S1: string;
-      S2: string;
-      S3: string;
-      S4: string;
-      S5: string;
-      S6: string;
-      SP: string;
+      body: string;
     };
 
     fontFamily: {

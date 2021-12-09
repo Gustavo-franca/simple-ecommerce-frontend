@@ -4,17 +4,14 @@ const Theme: DefaultTheme = {
   borderRadius: '5px',
 
   colors: {
-    c1J: '#FFFFFF',
-    c1A: '#151515'
+    c1A: '#151515',
+    c1C: '#A9A9A9',
+    c1D: '#D1D1D1',
+    c1H: '#F9F9F9',
+    c1J: '#FFFFFF'
   },
   fontSize: {
-    S1: '9.4em',
-    S2: '6.4em',
-    S3: '4.8em',
-    S4: '3.6em',
-    S5: '2.4em',
-    S6: '1.8em',
-    SP: '1.4em'
+    body: '14px'
   },
   fontFamily: {
     raleway: "'Raleway',sans-serif",
