@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   height: 12vh;
-  background: aqua;
 
   display: flex;
   flex-direction: row;
@@ -10,5 +9,4 @@ export const HeaderContainer = styled.header`
   align-items: center;
 
   padding: 0 4vh;
-  
 `;

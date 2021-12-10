@@ -40,7 +40,7 @@ export const Container = styled.div`
   align-items: center;
 
   background: ${(props) => props.theme.colors.c1H};
-  border: 1px solid ${(props) => props.theme.colors.c1D};
+  border: 2px solid ${(props) => props.theme.colors.c1D};
   border-radius: 8px;
   font-weight: bolder;
 `;
