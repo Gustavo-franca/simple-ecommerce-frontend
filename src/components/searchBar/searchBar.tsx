@@ -6,7 +6,7 @@ const SearchBar = () => {
     <Container>
       <StyledInput placeholder={'Busque produtos ...'} />
       <StyledButton>
-        <img src="/icons/searchIcon.svg" alt="search icon" />{' '}
+        <img src="/icons/searchIcon.svg" alt="search icon" />
       </StyledButton>
     </Container>
   );
