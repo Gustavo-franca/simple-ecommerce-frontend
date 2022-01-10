@@ -10,6 +10,8 @@ declare module 'styled-components' {
       c1C: string;
       c1D: string;
       c1J: string;
+      c2A: string;
+      c2B: string;
     };
 
     fontSize: {
@@ -19,6 +21,7 @@ declare module 'styled-components' {
     fontFamily: {
       raleway: string;
       roboto: string;
+      poppins: string;
     };
 
     breakpoints: {
