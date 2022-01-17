@@ -1,5 +1,6 @@
 export interface Product {
   imgURL: string;
+  images: string[];
   id: string;
   name: string;
   description: string;

@@ -18,7 +18,8 @@ const Theme: DefaultTheme = {
   fontFamily: {
     raleway: "'Raleway',sans-serif",
     poppins: "'Poppins',sans-serif",
-    roboto: "'Roboto Slab',sans-serif"
+    roboto: "'Roboto Slab',sans-serif",
+    openSans: "'Open Sans',sans-serif"
   },
   breakpoints: {
     xlg: 1200,

@@ -22,6 +22,7 @@ declare module 'styled-components' {
       raleway: string;
       roboto: string;
       poppins: string;
+      openSans: string;
     };
 
     breakpoints: {
