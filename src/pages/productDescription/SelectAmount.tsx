@@ -9,10 +9,18 @@ interface ProductImgProps {
   onChange: (optionSelected: Option) => void;
 }
 
-interface Option {
+export interface Option {
   value: string | number;
   label: string;
 }
+
+export const toOptions = (stock: number): Option[] => {
+  const rangeArray = Array.from(Array(stock).keys());
+  return rangeArray.map((_, index) => ({
+    value: index + 1,
+    label: String(index + 1)
+  }));
+};
 
 const SelectAmount = ({
   options,

@@ -8,7 +8,7 @@ import {
 } from './styles';
 import React, { useCallback, useState } from 'react';
 import { Product } from '../../types';
-import SelectAmount from './SelectAmount';
+import SelectAmount, { toOptions } from './SelectAmount';
 
 interface ProductImgProps {
   product: Product;
@@ -30,10 +30,7 @@ const ProductInformation = ({ product }: ProductImgProps) => {
           onChange={onChangeQuantity}
           name="quantity"
           id="quantity"
-          options={[
-            { label: '0', value: 0 },
-            { label: '1', value: 1 }
-          ]}
+          options={toOptions(product.stock)}
           selectedOption={quantitySelected}
         />
         <CheckoutButton>
