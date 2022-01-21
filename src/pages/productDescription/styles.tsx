@@ -26,6 +26,7 @@ export const ImgStyled = styled.img`
   height: 76.6vw;
   image-rendering: high-quality;
   image-resolution: from-image;
+  object-fit: contain;
 `;
 
 export const ImgContainer = styled.div`

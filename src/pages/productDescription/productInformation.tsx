@@ -22,7 +22,7 @@ const ProductInformation = ({ product }: ProductImgProps) => {
   );
   return (
     <ProductInformationContainer>
-      <ProductTitle>{product.name}</ProductTitle>
+      <ProductTitle>{product.title}</ProductTitle>
       <ProductDescription>{product.description}</ProductDescription>
       <CheckoutBar>
         <Price>{product.price}</Price>
