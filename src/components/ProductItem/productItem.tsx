@@ -9,12 +9,14 @@ interface ProductItemProps {
 }
 
 const ProductItem: FC<ProductItemProps> = ({ product }) => {
-  const onClickHandler = useCallback(() => '', []);
   return (
     <Container>
-      <ImgStyled src={product.imgURL} />
-      <ItemDescription description={product.description} title={product.name} />
-      <ItemPrice price={product.price} onClick={onClickHandler} />
+      <ImgStyled src={product.imgUrl} />
+      <ItemDescription
+        description={product.description.substring(0, 100)}
+        title={product.title}
+      />
+      <ItemPrice price={product.price} id={product.id} />
     </Container>
   );
 };

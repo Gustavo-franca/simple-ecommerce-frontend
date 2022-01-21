@@ -22,7 +22,9 @@ export const ImgStyled = styled.img`
 export const TitleStyled = styled.h2``;
 export const DescriptionStyled = styled.p``;
 
-export const ButtonStyled = styled.button`
+export const ButtonStyled = styled.a`
+  display: block;
+
   width: 100%;
   height: 40px;
 
@@ -32,7 +34,8 @@ export const ButtonStyled = styled.button`
 
   font-family: ${(props) => props.theme.fontFamily.poppins};
   font-weight: bold;
+  text-decoration: none;
   font-size: 15px;
-  line-height: 22px;
+  line-height: 40px;
   color: ${(props) => props.theme.colors.c1J};
 `;
