@@ -1,35 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/header';
 import { Product } from '../../types';
 import { Container } from './styles';
 import ProductImg from './productImg';
 import ProductInformation from './productInformation';
-
-const product: Product = {
-  name: 'Celular',
-  price: 1800.25,
-  id: 'IPHONE_BETA_XYZ',
-  description: 'O melhor celular para você',
-  previousPrice: 2500.25,
-  rate: 4.5,
-  shippingPrice: 0,
-  stock: 500,
-  imgURL:
-    'https://a-static.mlcdn.com.br/618x463/iphone-11-apple-64gb-preto-61-12mp-ios/magazineluiza/155610500/2815c001fcdff11766fcb266dca62daf.jpg',
-  images: [
-    'https://a-static.mlcdn.com.br/618x463/iphone-11-apple-64gb-preto-61-12mp-ios/magazineluiza/155610500/2815c001fcdff11766fcb266dca62daf.jpg',
-    'https://a-static.mlcdn.com.br/618x463/iphone-11-apple-64gb-preto-61-12mp-ios/magazineluiza/155610500/2815c001fcdff11766fcb266dca62daf.jpg'
-  ]
-};
+import { useParams } from 'react-router-dom';
+import { useApplicationContext } from '../../contexts/application';
+import ProductClient from '../../clients/product';
+import LoadingBox from '../../components/loadingBox';
 
 const ProductDescription = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState<Product | null>(null);
+  const { config } = useApplicationContext();
+  useEffect(() => {
+    if (config && !product && id)
+      new ProductClient({ config })
+        .getProduct({ id })
+        .then((data) => setProduct(data));
+  }, [config, product]);
+
   return (
     <>
       <Header />
-      <Container>
-        <ProductImg urls={product.images} />
-        <ProductInformation product={product} />
-      </Container>
+      {!product ? (
+        <LoadingBox />
+      ) : (
+        <Container>
+          <ProductImg urls={product.images} />
+          <ProductInformation product={product} />
+        </Container>
+      )}
     </>
   );
 };

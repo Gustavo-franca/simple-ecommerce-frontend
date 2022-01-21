@@ -1,4 +1,4 @@
-import axios, { Axios } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { Configs } from '../../config';
 import { Product } from '../../types';
 import { QueryProduct } from './types';
@@ -8,17 +8,24 @@ interface InternalClientConstructorProps {
 }
 
 class ProductClient {
-  private client: Axios;
+  private client: AxiosInstance;
   constructor({ config }: InternalClientConstructorProps) {
     this.client = axios.create({
-      baseURL: config.internalAPI + config.productAPIPath
+      baseURL: config.internalAPI + config.productAPIPath,
+      headers: { 'Access-Control-Allow-Origin': '*' }
     });
   }
 
-  getProducts(params: QueryProduct): Promise<Product[]> {
-    return this.client.get('/', {
-      params
-    });
+  async getProducts(params: QueryProduct): Promise<Product[]> {
+    return (
+      await this.client.get('/', {
+        params
+      })
+    ).data;
+  }
+
+  async getProduct({ id }: { id: string }) {
+    return (await this.client.get(`/${id}`, {})).data;
   }
 }
 
