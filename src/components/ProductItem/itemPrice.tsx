@@ -3,14 +3,14 @@ import { ButtonStyled, TitleStyled } from './styles';
 
 interface ItemPriceProps {
   price: number;
-  onClick: (event: SyntheticEvent) => void;
+  id: string;
 }
 
-const ItemPrice: FC<ItemPriceProps> = ({ price, onClick }) => {
+const ItemPrice: FC<ItemPriceProps> = ({ price, id }) => {
   return (
     <div>
       <TitleStyled>R$ {price.toLocaleString('pt-br')}</TitleStyled>
-      <ButtonStyled onClick={onClick}>Detalhe do produto</ButtonStyled>
+      <ButtonStyled href={'/products/' + id}>Detalhe do produto</ButtonStyled>
     </div>
   );
 };
