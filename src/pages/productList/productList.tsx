@@ -8,17 +8,18 @@ import ProductClient from '../../clients/product';
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [searchString, setSearchString] = useState<string>('');
   const { config } = useApplicationContext();
-  console.log(products);
+
   useEffect(() => {
     if (config && products && products.length == 0)
       new ProductClient({ config })
-        .getProducts({})
+        .getProducts({ description: searchString, title: searchString })
         .then((data) => setProducts(data));
-  }, [config, products]);
+  }, [config, products, searchString]);
   return (
     <>
-      <Header />
+      <Header requestProduct={(value) => setSearchString(value)} />
       <Container>
         {products.map((product) => (
           <ProductItem key={product.id} product={product} />
