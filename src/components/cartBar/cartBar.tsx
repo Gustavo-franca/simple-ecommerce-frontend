@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react';
-import { Action, Container } from './styles';
+
 import NotificationItem from '../notificationItem';
+import CartModal from '../cartModal';
+import { Action, Container } from './styles';
 
 const CartBar: FC = () => {
   const [notification, setNotification] = useState('1');
@@ -12,6 +14,7 @@ const CartBar: FC = () => {
         <img src="/icons/cart.svg" />
         {notification && <NotificationItem content={notification} />}
       </Action>
+      <CartModal />
     </Container>
   );
 };
