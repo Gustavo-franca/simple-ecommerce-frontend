@@ -8,7 +8,7 @@ import {
 } from './styles';
 import React, { useCallback, useState } from 'react';
 import { Product } from '../../types';
-import SelectAmount, { toOptions } from './SelectAmount';
+import SelectAmount, { toOptions } from '../../components/selectAmount';
 
 interface ProductImgProps {
   product: Product;
