@@ -2,5 +2,6 @@
   "appHost" : "http://localhost:3000/",
   "appName" : "Simple ecommerce",
   "internalAPI": "http://localhost:8080",
-  "productAPIPath": "/"
+  "productAPIPath": "/",
+  "cartAPIPath": "http://localhost:3333/"
 }

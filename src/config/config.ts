@@ -3,13 +3,15 @@ export interface Configs {
   appName: string;
   internalAPI: string;
   productAPIPath: string;
+  cartAPIPath: string;
 }
 
 export const defaultConfig: Configs = {
   appHost: 'http://localhost:3000',
   appName: 'Simple ecommerce',
   internalAPI: 'http://localhost:8080',
-  productAPIPath: '/'
+  productAPIPath: '/',
+  cartAPIPath: 'http://localhost:3333/'
 };
 
 const config = async (): Promise<Configs> =>
