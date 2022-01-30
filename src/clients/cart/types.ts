@@ -5,11 +5,12 @@ export interface QueryProduct {
   title?: string;
 }
 
-export type CartProduct = {
+export type CartAPIProduct = {
   id: string;
+  quantity: number;
 };
 
 export type CartResponse = {
   id: string;
-  products: CartProduct[];
+  products: CartAPIProduct[];
 };

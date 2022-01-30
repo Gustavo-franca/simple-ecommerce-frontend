@@ -1,9 +1,20 @@
 import React, { createContext, FC, useContext, useReducer } from 'react';
-import { CartModalContextDispatcher, CartModalContextState } from './types';
+import {
+  CartModalAction,
+  CartModalContextDispatcher,
+  CartModalContextState,
+  CartProduct,
+  DispatchFunction
+} from './types';
 import cartModalReducer from './reducers';
+import { isUndefined } from 'lodash';
+
+const mockedProducts: CartProduct[] = [];
 
 const defaultValue: CartModalContextState = {
-  closed: true
+  id: null,
+  open: false,
+  products: mockedProducts
 };
 
 const CartModalStateContext = createContext<CartModalContextState | undefined>(
@@ -12,7 +23,7 @@ const CartModalStateContext = createContext<CartModalContextState | undefined>(
 
 const CartModalDispatcherContext = createContext<
   CartModalContextDispatcher | undefined
->(() => undefined);
+>(undefined);
 
 export const CartModalProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(cartModalReducer, defaultValue);
@@ -27,9 +38,25 @@ export const CartModalProvider: FC = ({ children }) => {
 };
 
 export const useCartModalState = () => {
-  return useContext(CartModalStateContext);
+  const state = useContext(CartModalStateContext);
+
+  if (isUndefined(state))
+    throw new Error('CartModalProvider is required to use cartModalState');
+
+  return state;
 };
 
 export const useCartModalDispatcher = () => {
-  return useContext(CartModalDispatcherContext);
+  const dispatch = useContext(CartModalDispatcherContext);
+  const state = useContext(CartModalStateContext);
+
+  if (isUndefined(dispatch) || isUndefined(state))
+    throw new Error('CartModalProvider is required to use cartModalDispatcher');
+
+  return (props: CartModalAction | DispatchFunction) => {
+    if (typeof props === 'function') {
+      return props({ dispatch, state });
+    }
+    return dispatch(props);
+  };
 };

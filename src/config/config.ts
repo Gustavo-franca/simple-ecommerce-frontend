@@ -11,7 +11,7 @@ export const defaultConfig: Configs = {
   appName: 'Simple ecommerce',
   internalAPI: 'http://localhost:8080',
   productAPIPath: '/',
-  cartAPIPath: 'http://localhost:3333/'
+  cartAPIPath: 'http://localhost:3333/cart'
 };
 
 const config = async (): Promise<Configs> =>

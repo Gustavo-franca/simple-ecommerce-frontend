@@ -96,6 +96,7 @@ export const ButtonSection = styled.div`
 
 export const ContainerModal = styled.div`
   position: absolute;
+  z-index: 20;
   top: 40px;
   right: 0px;
   min-width: 300px;

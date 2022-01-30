@@ -19,7 +19,7 @@ class CartClient {
     return (await this.client.post('/')).data;
   }
 
-  async get({ id }: { id: string }) {
+  async get({ id }: { id: string }): Promise<CartResponse> {
     return (await this.client.get(`/${id}`, {})).data;
   }
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useEffect, useMemo } from 'react';
 import {
   ButtonSection,
   ContainerModal,
@@ -14,69 +14,39 @@ import {
 } from './styles';
 import { useApplicationContext } from '../../contexts/application';
 import ProductItem from './ProductItem';
-import { Product } from '../../types';
-
-const products: Product[] = [
-  {
-    id: 'asdasd',
-    title: 'asdasdasdasd',
-    description: 'asdsd',
-    imgUrl: '/icons/rectangle.png',
-    stock: 10,
-    price: 150.25,
-    shippingPrice: 10,
-    rate: 10,
-    previousPrice: 10,
-    images: []
-  },
-  {
-    id: 'asdadasd',
-    title: 'adasdasd',
-    description: 'asdadasd',
-    imgUrl: '/icons/rectangle.png',
-    stock: 10,
-    price: 0,
-    shippingPrice: 10,
-    rate: 10,
-    previousPrice: 10,
-    images: []
-  },
-  {
-    id: 'asdadasd',
-    title: 'adasdasd',
-    description: 'asdadasd',
-    imgUrl: '/icons/rectangle.png',
-    stock: 10,
-    price: 0,
-    shippingPrice: 10,
-    rate: 10,
-    previousPrice: 10,
-    images: []
-  },
-  {
-    id: 'asdadasd',
-    title: 'adasdasd',
-    description: 'asdadasd',
-    imgUrl: '/icons/rectangle.png',
-    stock: 10,
-    price: 0,
-    shippingPrice: 10,
-    rate: 10,
-    previousPrice: 10,
-    images: []
-  }
-];
+import {
+  useCartModalDispatcher,
+  useCartModalState
+} from '../../contexts/cartmodal';
+import { createCart } from '../../contexts/cartmodal/thunks';
 
 const CartModal: FC = () => {
-  const {
-    config: { appName }
-  } = useApplicationContext();
+  const { config } = useApplicationContext();
+  const { appName } = config;
 
-  return (
+  const { id, open, products } = useCartModalState();
+  const dispatch = useCartModalDispatcher();
+
+  useEffect(() => {
+    if (!id) dispatch(createCart({ config }));
+  }, [dispatch, id]);
+
+  const closeModal = useCallback(() => {
+    dispatch({
+      type: 'CLOSE_CART'
+    });
+  }, [dispatch]);
+
+  const subtotal = useMemo(
+    () => products.reduce((acc, cur) => acc + cur.price * cur.quantity, 0),
+    [products]
+  );
+
+  return open ? (
     <ContainerModal>
       <HeaderSection>
         <Title>{appName}</Title>
-        <Action onClick={() => undefined}>
+        <Action onClick={closeModal}>
           <img src="/icons/close-cart-icon.svg" />
         </Action>
       </HeaderSection>
@@ -87,13 +57,15 @@ const CartModal: FC = () => {
       </ProductSection>
       <SubtotalSection>
         <SubTitle>{'subtotal'}</SubTitle>
-        <SubTotal>{'73.98'} R$</SubTotal>
+        <SubTotal>{subtotal.toFixed(2)} R$</SubTotal>
       </SubtotalSection>
       <ButtonSection>
-        <ButtonSecondary>{'Continuar Comprando'}</ButtonSecondary>
+        <ButtonSecondary onClick={closeModal}>
+          {'Continuar Comprando'}
+        </ButtonSecondary>
         <ButtonPrimary>{'Finalizar Compra'}</ButtonPrimary>
       </ButtonSection>
     </ContainerModal>
-  );
+  ) : null;
 };
 export default CartModal;
