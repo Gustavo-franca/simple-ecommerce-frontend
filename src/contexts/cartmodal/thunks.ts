@@ -126,24 +126,30 @@ export const createCart =
     if (payload) {
       const { id } = JSON.parse(payload) as { id: string };
 
-      const { id: idCart, products } = await cartClient.get({ id });
+      const { id: idCart, products } = (await cartClient.get({ id })) ?? {
+        id: '',
+        products: []
+      };
 
-      const decoratedCartProducts = products.map(async ({ id, quantity }) => {
-        const product = await productAPI.getProduct({ id: id });
-        return {
-          ...product,
-          id,
-          quantity
-        };
-      });
+      if (id) {
+        const decoratedCartProducts = products.map(async ({ id, quantity }) => {
+          const product = await productAPI.getProduct({ id: id });
+          return {
+            ...product,
+            id,
+            quantity
+          };
+        });
 
-      return dispatch({
-        type: 'SET_CART',
-        payload: {
-          id: idCart,
-          products: await Promise.all(decoratedCartProducts)
-        }
-      });
+        return dispatch({
+          type: 'SET_CART',
+          payload: {
+            id: idCart,
+            products: await Promise.all(decoratedCartProducts)
+          }
+        });
+      }
+      window.localStorage.removeItem(cartKey);
     }
 
     const cart = await cartClient.create();
