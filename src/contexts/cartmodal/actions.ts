@@ -1,8 +1,6 @@
 import {
   AddProductPayload,
-  CartModalAction,
   CartModalContextState,
-  CartModalPayload,
   CartProduct,
   ChangeQuantityProductPayload,
   RemoveProductPayload
