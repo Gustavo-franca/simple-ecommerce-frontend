@@ -1,7 +1,6 @@
 export interface Configs {
   appHost: string;
   appName: string;
-  internalAPI: string;
   productAPIPath: string;
   cartAPIPath: string;
 }
@@ -9,9 +8,8 @@ export interface Configs {
 export const defaultConfig: Configs = {
   appHost: 'http://localhost:3000',
   appName: 'Simple ecommerce',
-  internalAPI: 'http://localhost:8080',
-  productAPIPath: '/',
-  cartAPIPath: 'http://localhost:3333/cart'
+  productAPIPath: 'http://localhost:8080/products',
+  cartAPIPath: 'http://localhost:8080/cart'
 };
 
 const config = async (): Promise<Configs> =>
