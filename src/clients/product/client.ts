@@ -11,7 +11,7 @@ class ProductClient {
   private client: AxiosInstance;
   constructor({ config }: InternalClientConstructorProps) {
     this.client = axios.create({
-      baseURL: config.internalAPI + config.productAPIPath,
+      baseURL: config.productAPIPath,
       headers: { 'Access-Control-Allow-Origin': '*' }
     });
   }
