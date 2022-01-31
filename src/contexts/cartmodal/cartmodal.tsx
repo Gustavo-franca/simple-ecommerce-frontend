@@ -3,18 +3,15 @@ import {
   CartModalAction,
   CartModalContextDispatcher,
   CartModalContextState,
-  CartProduct,
   DispatchFunction
 } from './types';
 import cartModalReducer from './reducers';
 import { isUndefined } from 'lodash';
 
-const mockedProducts: CartProduct[] = [];
-
 const defaultValue: CartModalContextState = {
   id: null,
   open: false,
-  products: mockedProducts
+  products: []
 };
 
 const CartModalStateContext = createContext<CartModalContextState | undefined>(
