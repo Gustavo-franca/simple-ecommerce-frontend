@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from '../../components/header';
 import ProductItem from '../../components/ProductItem';
-import { Product } from '../../types';
 import { Container } from './styles';
-import { useApplicationContext } from '../../contexts/application';
-import ProductClient from '../../clients/product';
+import { useSearchBarState } from '../../contexts/searchBar';
 
 const ProductList = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [searchString, setSearchString] = useState<string>('');
-  const { config } = useApplicationContext();
+  const { products } = useSearchBarState();
 
-  useEffect(() => {
-    if (config && products && products.length == 0)
-      new ProductClient({ config })
-        .getProducts({ description: searchString, title: searchString })
-        .then((data) => setProducts(data));
-  }, [config, products, searchString]);
   return (
     <>
-      <Header requestProduct={(value) => setSearchString(value)} />
+      <Header />
       <Container>
-        {products.map((product) => (
+        {products?.map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </Container>

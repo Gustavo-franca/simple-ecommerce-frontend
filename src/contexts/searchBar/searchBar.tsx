@@ -10,7 +10,8 @@ import searchReducer from './reducers';
 import { isUndefined } from 'lodash';
 
 const defaultValue: SearchBarContextState = {
-  search: ''
+  search: '',
+  products: null
 };
 
 const SearchBarStateContext = createContext<SearchBarContextState | undefined>(
@@ -44,14 +45,13 @@ export const useSearchBarState = () => {
 
 export const useSearchBarDispatcher = () => {
   const dispatch = useContext(SearchBarDispatcherContext);
-  const state = useContext(SearchBarStateContext);
 
-  if (isUndefined(dispatch) || isUndefined(state))
+  if (isUndefined(dispatch))
     throw new Error('SearchBarProvider is required to use SearchBarDispatcher');
 
   return (props: SearchBarAction | DispatchFunction) => {
     if (typeof props === 'function') {
-      return props({ dispatch, state });
+      return props({ dispatch });
     }
     return dispatch(props);
   };

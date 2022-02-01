@@ -4,14 +4,11 @@ import Logo from '../logo';
 import SearchBar from '../searchBar';
 import CartBar from '../cartBar';
 
-interface HeaderProps {
-  requestProduct?: (value: string) => void;
-}
-const Header = ({ requestProduct }: HeaderProps) => {
+const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
-      <SearchBar requestProduct={requestProduct} />
+      <SearchBar />
       <CartBar />
     </HeaderContainer>
   );

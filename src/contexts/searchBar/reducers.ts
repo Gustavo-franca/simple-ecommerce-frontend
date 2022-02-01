@@ -5,12 +5,23 @@ import {
   SearchBarReducer,
   SearchString
 } from './types';
+import { Product } from '../../types';
+import { stat } from 'fs';
 
 export const cartModalActions = {
   [SearchBarActionType.SET_SEARCH_STRING]: ({
+    state,
     action
   }: SearchBarReducer): SearchBarContextState => ({
+    ...state,
     search: action.payload as SearchString
+  }),
+  [SearchBarActionType.SET_PRODUCTS]: ({
+    state,
+    action
+  }: SearchBarReducer): SearchBarContextState => ({
+    ...state,
+    products: action.payload as Product[]
   })
 };
 

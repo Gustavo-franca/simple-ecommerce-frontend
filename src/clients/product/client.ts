@@ -16,10 +16,18 @@ class ProductClient {
     });
   }
 
-  async getProducts(params: QueryProduct): Promise<Product[]> {
+  async getProducts({
+    ids,
+    title,
+    description
+  }: QueryProduct): Promise<Product[]> {
     return (
       await this.client.get('/', {
-        params
+        params: {
+          ids: ids?.join(','),
+          title,
+          description
+        }
       })
     ).data;
   }
