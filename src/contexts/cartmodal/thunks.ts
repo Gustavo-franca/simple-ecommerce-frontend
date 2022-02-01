@@ -132,8 +132,21 @@ export const createCart =
       };
 
       if (id) {
-        const decoratedCartProducts = products.map(async ({ id, quantity }) => {
-          const product = await productAPI.getProduct({ id: id });
+        const ids = products.map(({ id }) => id);
+        const fullProducts = await productAPI.getProducts({ ids: ids });
+        console.log(fullProducts);
+
+        const defaultProduct = {
+          description: '',
+          imgUrl: '',
+          price: 0,
+          stock: 0,
+          title: ''
+        };
+
+        const decoratedCartProducts = products.map(({ id, quantity }) => {
+          const product =
+            fullProducts.find((p) => p.id === id) ?? defaultProduct;
           return {
             ...product,
             id,
@@ -145,7 +158,7 @@ export const createCart =
           type: 'SET_CART',
           payload: {
             id: idCart,
-            products: await Promise.all(decoratedCartProducts)
+            products: decoratedCartProducts
           }
         });
       }

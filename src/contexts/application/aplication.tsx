@@ -11,9 +11,13 @@ interface ApplicationProps {
   config: Configs;
 }
 
-export const ApplicationContext = createContext<ApplicationProps>({
+const defaultApplicationProps = {
   config: defaultConfig
-});
+};
+
+export const ApplicationContext = createContext<ApplicationProps>(
+  defaultApplicationProps
+);
 
 interface PageProviderProps {
   children?: ReactNode;

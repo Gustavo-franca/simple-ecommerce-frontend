@@ -1,18 +1,19 @@
 import { Dispatch } from 'react';
+import { Product } from '../../types';
 
 export type DispatchFunctionProps = {
   dispatch: SearchBarContextDispatcher;
-  state: SearchBarContextState;
 };
 
 export type DispatchFunction = (props: DispatchFunctionProps) => void;
 
 export type SearchString = string;
 
-export type SearchBarPayload = SearchString;
+export type SearchBarPayload = SearchString | Product[];
 
 export enum SearchBarActionType {
-  SET_SEARCH_STRING = '@search-bar/SET_SEARCH_STRING'
+  SET_SEARCH_STRING = '@search-bar/SET_SEARCH_STRING',
+  SET_PRODUCTS = '@search-bar/SET_PRODUCTS'
 }
 
 export interface SearchBarAction {
@@ -22,6 +23,7 @@ export interface SearchBarAction {
 
 export interface SearchBarContextState {
   search: string;
+  products: Product[] | null;
 }
 
 export interface SearchBarReducer {
