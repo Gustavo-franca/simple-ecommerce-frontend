@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ButtonStyled } from '../../components/ProductItem/styles';
 
 export const Container = styled.section`
   margin-top: 42px;
@@ -97,6 +96,7 @@ export const CheckoutButton = styled.button`
   font-size: 15px;
   line-height: 22px;
   color: ${(props) => props.theme.colors.c1J};
+  cursor: pointer;
 
   & > span {
     margin-right: 3px;

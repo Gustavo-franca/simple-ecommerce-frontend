@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   background: ${(props) => props.theme.colors.c1H};
   border: none;
+  cursor: pointer;
 
   border-radius: 0 8px 8px 0;
 `;
