@@ -11,6 +11,7 @@ import {
 
 interface InputProps {
   id: string;
+  type?: 'radio' | 'checkbox';
   secondary?: string | ReactNode;
   onChange: (value: string) => void;
   primary: string;
@@ -20,6 +21,7 @@ interface InputProps {
 
 const CheckboxInput: FC<InputProps> = ({
   id,
+  type = 'radio',
   primary,
   secondary,
   imgUrl,
@@ -37,7 +39,7 @@ const CheckboxInput: FC<InputProps> = ({
     <StyledLabel htmlFor={`${id}:${value}`}>
       <Container>
         <StyledInput
-          type="radio"
+          type={type}
           name={id}
           onChange={onInputChange}
           id={`${id}:${value}`}

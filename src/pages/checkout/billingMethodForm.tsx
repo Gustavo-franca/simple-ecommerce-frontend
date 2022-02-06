@@ -5,7 +5,6 @@ import {
   SectionTitle,
   StyledCheckboxGroupForBillingMethod
 } from './styles';
-import CheckboxGroup from '../../components/checkboxgroup';
 import { Options } from '../../components/checkboxgroup/types';
 
 const BillingMethodForm = () => {

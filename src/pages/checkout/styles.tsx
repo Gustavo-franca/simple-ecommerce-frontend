@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { StyledInput } from '../../components/searchBar/styles';
 import CheckboxGroup from '../../components/checkboxgroup';
 
 export const Container = styled.section`
@@ -38,6 +37,9 @@ export const SectionTitle = styled.h2`
 `;
 
 export const SectionDescription = styled.span`
+  display: inline-block;
+  margin-bottom: 20px;
+
   font-size: 12px;
   line-height: 16px;
   font-style: normal;
@@ -59,4 +61,35 @@ export const StyledInputGroup = styled.div`
 
 export const StyledCheckboxGroupForBillingMethod = styled(CheckboxGroup)`
   margin: 20px 0;
+`;
+
+export const CheckoutButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 20px 0;
+  height: 40px;
+
+  background: ${(props) => props.theme.colors.c2A};
+  border: 3px solid ${(props) => props.theme.colors.c2A};
+  border-radius: 8px;
+  padding: 5px;
+
+  font-family: ${(props) => props.theme.fontFamily.poppins};
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+  color: ${(props) => props.theme.colors.c1J};
+  cursor: pointer;
+
+  & > span {
+    margin-right: 3px;
+  }
+
+  & > img {
+    position: relative;
+    bottom: 1px;
+  }
 `;
