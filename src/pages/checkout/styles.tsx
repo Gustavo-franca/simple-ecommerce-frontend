@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 import CheckboxGroup from '../../components/checkboxgroup';
 
+export const ContainerLeft = styled.section`
+  align-items: center;
+`;
+
 export const Container = styled.section`
   margin-top: 42px;
   display: grid;
+  grid-template-columns: 50% 40%;
   gap: 20px;
-  align-items: center;
 `;
 
 export const ImgStyled = styled.img`
@@ -29,11 +33,11 @@ export const CheckoutBar = styled.div`
 `;
 
 export const Section = styled.section<{ width: number }>`
-  width: ${(props) => `${props.width}%` || '60%'};
+  width: 100%;
 `;
 
 export const SectionTitle = styled.h2`
-  margin-bottom: 0;
+  margin: 0;
 `;
 
 export const SectionDescription = styled.span`

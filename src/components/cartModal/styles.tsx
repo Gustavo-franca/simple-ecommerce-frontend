@@ -68,6 +68,7 @@ export const SubTitle = styled.p`
   font-weight: 600;
   font-size: 16px;
 `;
+
 export const SubTotal = styled.p`
   font-family: ${(props) => props.theme.fontFamily.poppins};
   font-style: normal;
