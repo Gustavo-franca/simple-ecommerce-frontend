@@ -28,12 +28,12 @@ export type CartModalPayload =
   | Partial<CartModalContextState>;
 
 export enum CartModalActionType {
-  OPEN_CART = '@cart-modal/OPEN_CART',
-  CLOSE_CART = '@cart-modal/CLOSE_CART',
-  REMOVE_PRODUCT = '@cart-modal/REMOVE_PRODUCT',
-  ADD_PRODUCT = '@cart-modal/ADD_PRODUCT',
-  CHANGE_QUANTITY_PRODUCT = '@cart-modal/CHANGE_QUANTITY_PRODUCT',
-  SET_CART = '@cart-modal/SET_CART'
+  OPEN_CART = '@checkout/OPEN_CART',
+  CLOSE_CART = '@checkout/CLOSE_CART',
+  REMOVE_PRODUCT = '@checkout/REMOVE_PRODUCT',
+  ADD_PRODUCT = '@checkout/ADD_PRODUCT',
+  CHANGE_QUANTITY_PRODUCT = '@checkout/CHANGE_QUANTITY_PRODUCT',
+  SET_CART = '@checkout/SET_CART'
 }
 
 export interface CartModalAction {

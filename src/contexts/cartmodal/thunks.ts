@@ -131,12 +131,13 @@ export const createCart =
         products: []
       };
 
-      if (id) {
+      if (idCart) {
         const ids = products.map(({ id }) => id);
         const fullProducts = await productAPI.getProducts({ ids: ids });
         console.log(fullProducts);
 
         const defaultProduct = {
+          id: '',
           description: '',
           imgUrl: '',
           price: 0,
@@ -149,7 +150,6 @@ export const createCart =
             fullProducts.find((p) => p.id === id) ?? defaultProduct;
           return {
             ...product,
-            id,
             quantity
           };
         });
