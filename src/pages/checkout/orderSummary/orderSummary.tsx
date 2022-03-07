@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { SectionDescription, SectionTitle } from '../styles';
-import { useCartModalState } from '../../../contexts/cartmodal';
 import {
   Header,
   OrderSummaryContainer,
@@ -14,13 +13,26 @@ import {
 } from './styles';
 import RemovableItem from '../../../components/RemovableItem';
 import SummaryItem from './summaryItem';
+import {
+  useCheckoutDispatcher,
+  useCheckoutState
+} from '../../../contexts/checkout';
 
 const OrderSummary = () => {
-  const { products } = useCartModalState();
+  const { checkoutProducts } = useCheckoutState();
+  const dispatch = useCheckoutDispatcher();
 
   const subtotal = useMemo(
-    () => products.reduce((acc, cur) => acc + cur.price * cur.quantity, 0),
-    [products]
+    () =>
+      checkoutProducts.reduce((acc, cur) => acc + cur.price * cur.quantity, 0),
+    [checkoutProducts]
+  );
+
+  const shippingPrice = useMemo(() => Math.random() * 100, [subtotal]);
+
+  const total = useMemo(
+    () => subtotal + shippingPrice,
+    [subtotal, shippingPrice]
   );
 
   return (
@@ -32,25 +44,40 @@ const OrderSummary = () => {
         </SectionDescription>
       </Header>
       <ProductSection>
-        {products.map((product) => (
+        {checkoutProducts.map((product) => (
           <RemovableItem
             key={product.id}
             product={product}
-            onRemoveItem={() => undefined}
-            onChangeQuantity={() => undefined}
+            onRemoveItem={() => {
+              dispatch({
+                type: 'REMOVE_PRODUCT',
+                payload: {
+                  id: product.id
+                }
+              });
+            }}
+            onChangeQuantity={({ newQuantity, id }) => {
+              dispatch({
+                type: 'CHANGE_QUANTITY_PRODUCT',
+                payload: {
+                  newQuantity,
+                  id
+                }
+              });
+            }}
           />
         ))}
       </ProductSection>
       <SubtotalSection>
         <SummaryItem title={'Subtotal'} total={subtotal} />
-        <SummaryItem title={'Entrega'} total={subtotal} />
+        <SummaryItem title={'Entrega'} total={shippingPrice} />
       </SubtotalSection>
       <TotalSection>
         <TotalLeft>
           <TotalTitle>Total do Pedido</TotalTitle>
           <TotalDescription> Entrega até xxx-xxx-xxx</TotalDescription>
         </TotalLeft>
-        <Total>{subtotal.toFixed(2)}</Total>
+        <Total>{total.toFixed(2)}</Total>
       </TotalSection>
     </OrderSummaryContainer>
   );

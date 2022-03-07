@@ -2,5 +2,6 @@
   "appHost" : "http://localhost:3000/",
   "appName" : "Simple ecommerce",
   "productAPIPath": "http://localhost:8080/products",
+  "checkoutAPIPath": "http://localhost:8080/checkout",
   "cartAPIPath": "http://localhost:8080/cart"
 }

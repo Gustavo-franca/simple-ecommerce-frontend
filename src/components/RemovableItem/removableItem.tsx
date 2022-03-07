@@ -81,8 +81,8 @@ const RemovableItem: FC<ProductItemProps> = ({
         <Price>{subTotal(product).toLocaleString('pt-br')}</Price>
         <SelectAmount
           onChange={onQuantity}
-          name="quantity"
-          id="quantity"
+          name="quantity-checkout"
+          id="quantity-checkout"
           options={toOptions(product.stock)}
           selectedOption={product.quantity}
         />

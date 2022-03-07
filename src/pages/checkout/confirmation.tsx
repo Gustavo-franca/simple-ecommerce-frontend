@@ -1,15 +1,26 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Options } from '../../components/checkboxgroup/types';
 import {
   CheckoutButton,
   Section,
   SectionDescription,
-  SectionTitle,
-  StyledCheckboxGroupForBillingMethod
+  SectionTitle
 } from './styles';
 import CheckboxInput from '../../components/checkboxInput';
+import { useNavigate } from 'react-router-dom';
+import { finishCheckout } from '../../contexts/checkout/thunk';
+import {
+  useCheckoutDispatcher,
+  useCheckoutState
+} from '../../contexts/checkout';
+import { useApplicationContext } from '../../contexts/application';
 
 const Confirmation = () => {
+  const navigate = useNavigate();
+  const dispatch = useCheckoutDispatcher();
+  const { config } = useApplicationContext();
+  const { checkoutProducts } = useCheckoutState();
+
   const confirmation: Options[] = useMemo(
     () => [
       {
@@ -24,6 +35,11 @@ const Confirmation = () => {
     []
   );
 
+  const finish = useCallback(() => {
+    dispatch(finishCheckout({ products: checkoutProducts, config }));
+    navigate({ pathname: '/success' });
+  }, [navigate, finishCheckout]);
+
   return (
     <Section width={60}>
       <SectionTitle>Confirmação</SectionTitle>
@@ -34,14 +50,14 @@ const Confirmation = () => {
       {confirmation.map(({ primary, value }) => (
         <CheckboxInput
           key={value}
-          onChange={console.log}
+          onChange={() => console.info('not implemented yet!')}
           value={value}
           primary={primary}
           id={value}
           type={'checkbox'}
         />
       ))}
-      <CheckoutButton>Finalizar Compra</CheckoutButton>
+      <CheckoutButton onClick={finish}>Finalizar Compra</CheckoutButton>
     </Section>
   );
 };

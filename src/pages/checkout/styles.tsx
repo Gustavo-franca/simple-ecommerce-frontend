@@ -34,6 +34,7 @@ export const CheckoutBar = styled.div`
 
 export const Section = styled.section<{ width: number }>`
   width: 100%;
+  margin-top: 10px;
 `;
 
 export const SectionTitle = styled.h2`

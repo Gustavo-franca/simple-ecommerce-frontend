@@ -19,13 +19,16 @@ import {
   useCartModalState
 } from '../../contexts/cartmodal';
 import { createCart } from '../../contexts/cartmodal/thunks';
+import { useCheckoutDispatcher } from '../../contexts/checkout';
+import { useNavigate } from 'react-router-dom';
 
 const CartModal: FC = () => {
   const { config } = useApplicationContext();
   const { appName } = config;
-
+  const navigate = useNavigate();
   const { id, open, products } = useCartModalState();
   const dispatch = useCartModalDispatcher();
+  const dispatchCheckout = useCheckoutDispatcher();
 
   useEffect(() => {
     if (!id) dispatch(createCart({ config }));
@@ -36,6 +39,17 @@ const CartModal: FC = () => {
       type: 'CLOSE_CART'
     });
   }, [dispatch]);
+
+  const onCheckout = useCallback(() => {
+    dispatchCheckout({
+      type: 'SET_CHECKOUT_PRODUCTS',
+      payload: JSON.parse(JSON.stringify(products))
+    });
+    dispatch({
+      type: 'CLOSE_CART'
+    });
+    navigate({ pathname: '/checkout' });
+  }, [dispatch, navigate, dispatchCheckout]);
 
   const subtotal = useMemo(
     () => products.reduce((acc, cur) => acc + cur.price * cur.quantity, 0),
@@ -63,7 +77,7 @@ const CartModal: FC = () => {
         <ButtonSecondary onClick={closeModal}>
           {'Continuar Comprando'}
         </ButtonSecondary>
-        <ButtonPrimary>{'Finalizar Compra'}</ButtonPrimary>
+        <ButtonPrimary onClick={onCheckout}>{'Finalizar Compra'}</ButtonPrimary>
       </ButtonSection>
     </ContainerModal>
   ) : null;

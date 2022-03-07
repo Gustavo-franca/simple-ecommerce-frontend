@@ -22,7 +22,7 @@ const BillingMethodForm = () => {
         value: 'dhl',
         secondary: '+45 Additional price',
         imgUrl:
-          'https://logosmarcas.net/wp-content/uploads/2020/04/FedEx-Logo.png'
+          'https://logodownload.org/wp-content/uploads/2015/12/dhl-logo-0-1.png'
       }
     ],
     []

@@ -6,6 +6,7 @@ import { Theme } from '../../styles/theme';
 import { ApplicationContainer } from './styles';
 import { CartModalProvider } from '../../contexts/cartmodal';
 import { SearchBarProvider } from '../../contexts/searchBar';
+import { CheckoutProvider } from '../../contexts/checkout';
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,10 +17,12 @@ const Layout = ({ children }: LayoutProps) => {
     <ThemeProvider theme={Theme}>
       <ApplicationProvider>
         <CartModalProvider>
-          <SearchBarProvider>
-            <GlobalStyle />
-            <ApplicationContainer>{children}</ApplicationContainer>
-          </SearchBarProvider>
+          <CheckoutProvider>
+            <SearchBarProvider>
+              <GlobalStyle />
+              <ApplicationContainer>{children}</ApplicationContainer>
+            </SearchBarProvider>
+          </CheckoutProvider>
         </CartModalProvider>
       </ApplicationProvider>
     </ThemeProvider>
