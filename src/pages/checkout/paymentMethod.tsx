@@ -37,7 +37,7 @@ const PaymentMethod = () => {
         Por favor, escolha um Método de pagamento
       </SectionDescription>
       <StyledCheckboxGroupForBillingMethod
-        id={'billing-radio'}
+        id={'payment-radio'}
         options={billingOptions}
         onChange={console.log}
       />

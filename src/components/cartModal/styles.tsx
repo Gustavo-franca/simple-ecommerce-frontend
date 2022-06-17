@@ -204,7 +204,7 @@ export const CloseModalStyled = styled(Action)`
 export const ProductImg = styled.img`
   background: ${(props) => props.theme.colors.c1H};
   width: 35%;
-  max-height: 100%;
+  max-height: 100px;
 
   border-radius: 16px;
 

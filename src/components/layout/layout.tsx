@@ -7,6 +7,7 @@ import { ApplicationContainer } from './styles';
 import { CartModalProvider } from '../../contexts/cartmodal';
 import { SearchBarProvider } from '../../contexts/searchBar';
 import { CheckoutProvider } from '../../contexts/checkout';
+import TraceProvider from '../../contexts/tracer/tracer';
 
 interface LayoutProps {
   children: ReactNode;
@@ -20,7 +21,9 @@ const Layout = ({ children }: LayoutProps) => {
           <CheckoutProvider>
             <SearchBarProvider>
               <GlobalStyle />
-              <ApplicationContainer>{children}</ApplicationContainer>
+              <TraceProvider>
+                <ApplicationContainer>{children}</ApplicationContainer>
+              </TraceProvider>
             </SearchBarProvider>
           </CheckoutProvider>
         </CartModalProvider>

@@ -10,13 +10,19 @@ export const Container = styled.div`
   width: 80%;
   height: 280px;
 
+  margin-top: 10px;
+
   background: ${(props) => props.theme.colors.c1H};
   border: 2px solid ${(props) => props.theme.colors.c1D};
   border-radius: 8px;
 `;
 export const ImgStyled = styled.img`
+  max-width: 280px;
   width: 90%;
   height: 90%;
+  image-rendering: high-quality;
+  image-resolution: from-image;
+  object-fit: contain;
 `;
 
 export const TitleStyled = styled.h2``;

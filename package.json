@@ -3,6 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@opentelemetry/api": "^1.0.4",
+    "@opentelemetry/exporter-collector": "^0.25.0",
+    "@opentelemetry/exporter-jaeger": "^1.0.1",
+    "@opentelemetry/exporter-otlp-http": "^0.26.0",
+    "@opentelemetry/exporter-zipkin": "^1.0.1",
+    "@opentelemetry/instrumentation": "^0.27.0",
+    "@opentelemetry/instrumentation-fetch": "^0.27.0",
+    "@opentelemetry/instrumentation-xml-http-request": "^0.27.0",
+    "@opentelemetry/plugin-react-load": "^0.26.1",
+    "@opentelemetry/propagator-ot-trace": "^0.25.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -12,6 +22,7 @@
     "@types/react-dom": "^17.0.9",
     "axios": "^0.25.0",
     "env-cmd": "^10.1.0",
+    "http-proxy-middleware": "^2.0.3",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -46,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@opentelemetry/exporter-trace-otlp-http": "^0.27.0",
     "@types/lodash": "^4.14.178",
     "@types/styled-components": "^5.1.17",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
